@@ -1,0 +1,21 @@
+Project: Self-Healing CI/CD Pipeline
+Category: Coding & developer tools
+Team: Harit Adesara + teammate
+
+Summary:
+An autonomous agent that detects failed GitHub Actions workflow runs, downloads and
+summarizes the logs, classifies whether the failure is auto-fixable, and (when it is)
+opens an AI_FIX branch, patches the broken files with a tool-using repair agent, and
+commits the fix. Non-fixable failures get a written suggestion instead.
+
+How BharatCode is used:
+All LLM calls (log summarization, error classification, the repair agent with tool
+calling, commit message generation, and fix suggestions) go through the BharatCode
+model API (OpenAI-compatible) at https://bharatcode.ai/api/model/v1 using the
+qwen-3.8-27b model.
+
+Files: Agent/agent.py and Agent/function.py
+
+Setup:
+Set BHARATCODE_API_KEY in Agent/.env (get a key at https://bharatcode.ai/account).
+No secrets are stored in this repository.
